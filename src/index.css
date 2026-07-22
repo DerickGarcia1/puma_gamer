@@ -1,111 +1,140 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  font-family:
+    Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  color: #f8fafc;
+  background-color: #061a40;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --puma-yellow: #ffc928;
+  --puma-blue: #0756a3;
+  --puma-dark-blue: #061a40;
+  --puma-light-blue: #59b8ff;
+  --puma-white: #f8fafc;
+  --puma-black: #07111f;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
+html {
+  min-width: 320px;
+  min-height: 100%;
+}
+
 body {
+  min-width: 320px;
+  min-height: 100vh;
   margin: 0;
+  background:
+    radial-gradient(circle at top, #0d67b5 0%, #061a40 48%, #030b1b 100%);
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+button {
+  cursor: pointer;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
-p {
+
+.app {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.welcome {
+  width: min(100%, 960px);
+  text-align: center;
+}
+
+.welcome__logo {
+  display: block;
+  width: clamp(130px, 28vw, 220px);
+  height: auto;
+  margin: 0 auto 22px;
+  border: 4px solid var(--puma-yellow);
+  border-radius: 28%;
+  box-shadow:
+    0 0 0 6px rgb(7 86 163 / 45%),
+    0 14px 32px rgb(0 0 0 / 40%);
+  image-rendering: pixelated;
+}
+
+.welcome__badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 2px solid var(--puma-yellow);
+  border-radius: 999px;
+  color: var(--puma-yellow);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.welcome h1 {
+  margin: 18px 0 8px;
+  color: var(--puma-yellow);
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 1;
+  text-shadow: 5px 5px 0 var(--puma-blue);
+}
+
+.welcome > p {
+  max-width: 660px;
+  margin: 0 auto;
+  color: #dbeafe;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.welcome__games {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 42px;
+}
+
+.game-preview {
+  min-height: 180px;
+  padding: 28px;
+  border: 2px solid rgb(255 201 40 / 55%);
+  border-radius: 18px;
+  background-color: rgb(7 17 31 / 76%);
+  box-shadow: 8px 8px 0 rgb(255 201 40 / 18%);
+  text-align: left;
+}
+
+.game-preview h2 {
+  margin: 0 0 12px;
+  color: var(--puma-yellow);
+}
+
+.game-preview p {
   margin: 0;
+  color: #bfdbfe;
+  line-height: 1.6;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+@media (max-width: 650px) {
+  .welcome__games {
+    grid-template-columns: 1fr;
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .game-preview {
+    min-height: auto;
+  }
 }
