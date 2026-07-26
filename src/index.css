@@ -109,7 +109,7 @@ a {
 }
 
 .game-preview {
-  min-height: 180px;
+  min-height: 80px;
   padding: 28px;
   border: 2px solid rgb(255 201 40 / 55%);
   border-radius: 18px;
@@ -135,6 +135,6 @@ a {
   }
 
   .game-preview {
-    min-height: auto;
+    min-height: 30px;
   }
 }

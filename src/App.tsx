@@ -22,9 +22,15 @@ function App() {
           </article>
 
           <article className="game-preview">
-            <h2>Puma Push</h2>
-            <p>Resuelve desafíos inspirados en el clásico Sokoban.</p>
+            <h2>Puma Run</h2>
+            <p>Salta La roca o el arbusto.</p>
           </article>
+
+          <article className="game-preview">
+            <h2>Puma fest</h2>
+            <p>Salta La roca o el arbusto.</p>
+          </article>
+
         </div>
       </section>
     </main>
