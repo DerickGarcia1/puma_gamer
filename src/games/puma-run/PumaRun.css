@@ -1,0 +1,136 @@
+/* Paleta retro-arcade del equipo: dorado #ffc928 · azul oscuro #061a40 · azul claro #59b8ff */
+
+.puma-run-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 20px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.puma-run-instrucciones {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0 0 14px;
+    font-size: 0.8rem;
+    color: #59b8ff;
+}
+
+.puma-run-instrucciones li::before {
+    content: '▸ ';
+    color: #ffc928;
+}
+
+.puma-run-marcador {
+    display: flex;
+    gap: 24px;
+    font-size: 0.95rem;
+    color: #ffc928;
+    margin-bottom: 12px;
+}
+
+.puma-run-carril {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(
+        180deg,
+        #0a2a5e 0%,
+        #061a40 70%,
+        #04122c 100%
+    );
+    border: 3px solid #ffc928;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.puma-run-suelo {
+    background: #ffc928;
+}
+
+.puma-run-sprite {
+    position: absolute;
+    background-color: #ffc928;
+    background-image: url('/icons/pumagamer-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #061a40;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    transition: bottom 0.03s linear;
+}
+
+.puma-run-obstaculo {
+    position: absolute;
+    bottom: 0;
+    border: 2px solid #061a40;
+    border-radius: 4px;
+    transition: left 0.03s linear;
+}
+
+.puma-run-obstaculo--roca {
+    background: #59b8ff;
+}
+
+.puma-run-obstaculo--arbusto {
+    background: #3d7a4f;
+    border-radius: 50% 50% 20% 20%;
+}
+
+.puma-run-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 26, 64, 0.85);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 1.05rem;
+    text-align: center;
+    padding: 16px;
+}
+
+.puma-run-overlay button {
+    background: #ffc928;
+    color: #061a40;
+    border: 3px solid #061a40;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #061a40;
+}
+
+.puma-run-overlay button:hover {
+    background: #59b8ff;
+}
+
+.puma-run-overlay button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #061a40;
+}
+
+@media (max-width: 600px) {
+    .puma-run-carril {
+        height: 180px;
+    }
+
+    .puma-run-marcador {
+        font-size: 0.85rem;
+        gap: 16px;
+    }
+}
