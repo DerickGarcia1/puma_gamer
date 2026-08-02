@@ -1,0 +1,113 @@
+.puma-four {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.puma-four__marcador {
+  color: var(--puma-white);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.puma-four__estado {
+  color: var(--puma-yellow);
+  font-size: 0.85rem;
+  text-shadow: 2px 2px 0 var(--puma-blue);
+  min-height: 1.5em;
+  text-align: center;
+}
+
+.puma-four__tablero {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 12px;
+  background-color: var(--puma-blue);
+  box-shadow:
+    6px 6px 0 rgb(0 0 0 / 35%),
+    inset 0 0 0 3px rgb(255 201 40 / 40%);
+}
+
+.puma-four__fila {
+  display: flex;
+  gap: 6px;
+}
+
+.puma-four__celda {
+  width: clamp(30px, 8vw, 46px);
+  height: clamp(30px, 8vw, 46px);
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.puma-four__celda:disabled {
+  cursor: not-allowed;
+}
+
+.puma-four__celda--vacia {
+  background-color: var(--puma-dark-blue);
+  box-shadow: inset 0 3px 6px rgb(0 0 0 / 50%);
+}
+
+.puma-four__celda--jugador1 {
+  background-color: var(--puma-yellow);
+  box-shadow:
+    inset 0 -4px 6px rgb(0 0 0 / 25%),
+    0 0 8px rgb(255 201 40 / 60%);
+}
+
+.puma-four__celda--jugador2 {
+  background-color: var(--puma-light-blue);
+  box-shadow:
+    inset 0 -4px 6px rgb(0 0 0 / 25%),
+    0 0 8px rgb(89 184 255 / 60%);
+}
+
+.puma-four__celda--vacia:not(:disabled):hover {
+  box-shadow:
+    inset 0 3px 6px rgb(0 0 0 / 50%),
+    0 0 0 3px rgb(255 201 40 / 35%);
+  transform: scale(1.05);
+}
+
+.puma-four__reiniciar {
+  padding: 10px 28px;
+  border: 3px solid var(--puma-dark-blue);
+  border-radius: 6px;
+  background-color: var(--puma-yellow);
+  color: var(--puma-black);
+  font-family: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  box-shadow: 4px 4px 0 rgb(0 0 0 / 35%);
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.puma-four__reiniciar:hover {
+  background-color: #ffdb63;
+  transform: translateY(-2px);
+  box-shadow: 5px 6px 0 rgb(0 0 0 / 40%);
+}
+
+.puma-four__reiniciar:active {
+  transform: translateY(0);
+  box-shadow: 2px 2px 0 rgb(0 0 0 / 35%);
+}
+
+@media (max-width: 500px) {
+  .puma-four__tablero {
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .puma-four__fila {
+    gap: 4px;
+  }
+}
