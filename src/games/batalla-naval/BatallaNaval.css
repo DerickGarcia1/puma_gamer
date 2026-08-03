@@ -1,0 +1,272 @@
+.batalla-naval {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.batalla-naval__panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.batalla-naval__dato {
+  min-height: 82px;
+  padding: 14px 10px;
+  border: 3px solid #ffc928;
+  background: #061a40;
+  text-align: center;
+  box-shadow: 4px 4px 0 #59b8ff;
+}
+
+.batalla-naval__dato span {
+  display: block;
+  margin-bottom: 10px;
+  color: #59b8ff;
+  font-size: 0.55rem;
+  line-height: 1.5;
+}
+
+.batalla-naval__dato strong {
+  color: #ffc928;
+  font-size: 0.8rem;
+}
+
+.batalla-naval__mensaje {
+  min-height: 58px;
+  margin: 0 0 18px;
+  padding: 16px;
+  border: 3px solid #59b8ff;
+  background: #061a40;
+  color: #ffffff;
+  font-size: 0.65rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.batalla-naval__contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 22px;
+  align-items: start;
+}
+
+.batalla-naval__tablero-contenedor {
+  overflow-x: auto;
+  padding: 14px;
+  border: 4px solid #ffc928;
+  background: #061a40;
+  box-shadow: 7px 7px 0 #59b8ff;
+}
+
+.batalla-naval__tablero {
+  --celda: clamp(30px, 5.2vw, 50px);
+
+  display: grid;
+  grid-template-columns: 28px repeat(10, var(--celda));
+  justify-content: center;
+  min-width: 360px;
+}
+
+.batalla-naval__fila {
+  display: contents;
+}
+
+.batalla-naval__encabezado,
+.batalla-naval__numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffc928;
+  font-size: 0.55rem;
+}
+
+.batalla-naval__celda {
+  width: var(--celda);
+  height: var(--celda);
+  padding: 0;
+  border: 1px solid #59b8ff;
+  border-radius: 0;
+  background: #0b3970;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  cursor: crosshair;
+  transition:
+    transform 0.1s ease,
+    background-color 0.1s ease;
+}
+
+.batalla-naval__celda:hover:not(:disabled) {
+  z-index: 1;
+  background: #1765a8;
+  outline: 2px solid #ffc928;
+  transform: scale(1.08);
+}
+
+.batalla-naval__celda:focus-visible {
+  z-index: 2;
+  outline: 3px solid #ffc928;
+}
+
+.batalla-naval__celda--agua {
+  background: #59b8ff;
+  color: #061a40;
+}
+
+.batalla-naval__celda--tocado {
+  background: #ffc928;
+  color: #061a40;
+}
+
+.batalla-naval__celda--hundido {
+  background: #b82020;
+  color: #ffffff;
+}
+
+.batalla-naval__celda:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.batalla-naval__lateral {
+  padding: 18px;
+  border: 4px solid #59b8ff;
+  background: #061a40;
+  box-shadow: 7px 7px 0 #ffc928;
+}
+
+.batalla-naval__lateral h2 {
+  margin: 0 0 18px;
+  color: #ffc928;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.batalla-naval__flota {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.batalla-naval__barco {
+  padding-bottom: 12px;
+  border-bottom: 2px dashed #59b8ff;
+}
+
+.batalla-naval__barco:last-child {
+  border-bottom: 0;
+}
+
+.batalla-naval__barco-nombre {
+  display: block;
+  margin-bottom: 7px;
+  color: #ffffff;
+  font-size: 0.55rem;
+  line-height: 1.5;
+}
+
+.batalla-naval__barco-estado {
+  color: #59b8ff;
+  font-size: 0.5rem;
+  line-height: 1.5;
+}
+
+.batalla-naval__barco-estado--hundido {
+  color: #ffc928;
+}
+
+.batalla-naval__boton {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px 10px;
+  border: 3px solid #ffc928;
+  background: #ffc928;
+  color: #061a40;
+  font-family: inherit;
+  font-size: 0.6rem;
+  line-height: 1.5;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #59b8ff;
+}
+
+.batalla-naval__boton:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #59b8ff;
+}
+
+.batalla-naval__leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 0.5rem;
+  line-height: 1.5;
+}
+
+.batalla-naval__leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.batalla-naval__leyenda-color {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ffffff;
+}
+
+.batalla-naval__leyenda-color--agua {
+  background: #59b8ff;
+}
+
+.batalla-naval__leyenda-color--tocado {
+  background: #ffc928;
+}
+
+.batalla-naval__leyenda-color--hundido {
+  background: #b82020;
+}
+
+@media (max-width: 850px) {
+  .batalla-naval__contenido {
+    grid-template-columns: 1fr;
+  }
+
+  .batalla-naval__lateral {
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .batalla-naval__panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .batalla-naval__tablero-contenedor {
+    padding: 8px;
+  }
+
+  .batalla-naval__mensaje {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .batalla-naval__tablero {
+    --celda: 28px;
+
+    min-width: 320px;
+  }
+
+  .batalla-naval__panel {
+    grid-template-columns: 1fr;
+  }
+}
