@@ -102,6 +102,19 @@ export interface Barco {
 }
 
 /**
+ * Representa la información mínima necesaria
+ * para crear un barco nuevo.
+ *
+ * Todavía no incluye orientación, posiciones ni impactos,
+ * porque esos datos se generan al iniciar la partida.
+ */
+export interface ConfiguracionBarco {
+  id: string
+  nombre: string
+  longitud: number
+}
+
+/**
  * Representa el estado general de la partida.
  */
 export type EstadoPartida = 'jugando' | 'ganada'
