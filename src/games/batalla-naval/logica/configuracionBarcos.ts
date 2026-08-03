@@ -1,11 +1,5 @@
 import type { ConfiguracionBarco } from './tipos'
 
-/**
- * Flota utilizada en cada partida de Batalla Naval.
- *
- * Cada objeto funciona como una plantilla.
- * La orientación y las posiciones se generan después.
- */
 export const CONFIGURACION_BARCOS: ConfiguracionBarco[] = [
   {
     id: 'portaaviones',

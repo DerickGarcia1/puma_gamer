@@ -1,10 +1,6 @@
 import type { Coordenada, Tablero } from './tipos'
 import { TAMANIO_TABLERO } from './crearTablero'
 
-/**
- * Comprueba si una coordenada se encuentra
- * dentro de los límites del tablero.
- */
 export function estaDentroDelTablero(
   coordenada: Coordenada,
 ): boolean {
@@ -16,12 +12,6 @@ export function estaDentroDelTablero(
   )
 }
 
-/**
- * Comprueba si todas las coordenadas están libres.
- *
- * Esta función asume que las coordenadas ya fueron
- * validadas y se encuentran dentro del tablero.
- */
 export function estanCeldasDisponibles(
   tablero: Tablero,
   posiciones: Coordenada[],
@@ -32,14 +22,6 @@ export function estanCeldasDisponibles(
   )
 }
 
-/**
- * Comprueba si un barco puede colocarse en las
- * coordenadas proporcionadas.
- *
- * Para ser válido:
- * 1. Todas sus posiciones deben estar dentro del tablero.
- * 2. Todas las celdas deben estar desocupadas.
- */
 export function sePuedeColocarBarco(
   tablero: Tablero,
   posiciones: Coordenada[],
