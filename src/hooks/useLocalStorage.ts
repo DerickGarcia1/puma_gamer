@@ -1,45 +1,47 @@
-import { useState } from 'react'
+import { useCallback, useState } from "react";
 
-interface ResultadoLocalStorage<T> {
-  valor: T
-  guardar: (nuevoValor: T) => void
-  reiniciar: () => void
+interface UseLocalStorageReturn<T> {
+    valor: T;
+    guardar: (nuevoValor: T | ((anterior: T) => T)) => void;
+    reiniciar: () => void;
 }
 
 export function useLocalStorage<T>(
-  clave: string,
-  valorInicial: T,
-): ResultadoLocalStorage<T> {
-  const [valor, setValor] = useState<T>(() => {
-    try {
-      const valorGuardado = localStorage.getItem(clave)
+    clave: string,
+    valorInicial: T
+): UseLocalStorageReturn<T> {
+    const [valor, setValor] = useState<T>(() => {
+        try {
+            const guardado = window.localStorage.getItem(clave);
+            return guardado !== null ? (JSON.parse(guardado) as T) : valorInicial;
+        } catch {
+            return valorInicial;
+        }
+    });
 
-      if (valorGuardado === null) {
-        return valorInicial
-      }
+    const guardar = useCallback(
+        (nuevoValor: T | ((anterior: T) => T)) => {
+            setValor((anterior) => {
+                const resultado =
+                    typeof nuevoValor === "function"
+                        ? (nuevoValor as (anterior: T) => T)(anterior)
+                        : nuevoValor;
 
-      return JSON.parse(valorGuardado) as T
-    } catch {
-      return valorInicial
-    }
-  })
+                try {
+                    window.localStorage.setItem(clave, JSON.stringify(resultado));
+                } catch {
+                    // localStorage puede fallar (modo privado, cuota llena, etc.)
+                    // El juego debe seguir funcionando aunque no se pueda persistir.
+                }
+                return resultado;
+            });
+        },
+        [clave]
+    );
 
-  function guardar(nuevoValor: T): void {
-    setValor(nuevoValor)
-    localStorage.setItem(
-      clave,
-      JSON.stringify(nuevoValor),
-    )
-  }
+    const reiniciar = useCallback(() => {
+        guardar(valorInicial);
+    }, [guardar, valorInicial]);
 
-  function reiniciar(): void {
-    setValor(valorInicial)
-    localStorage.removeItem(clave)
-  }
-
-  return {
-    valor,
-    guardar,
-    reiniciar,
-  }
+    return { valor, guardar, reiniciar };
 }
